@@ -1,15 +1,18 @@
 Hiccup SDK for Javascript
 ======================
 
-installation:
+installation
+------------
 
 run `yarn install`
 
 
-Development:
+Development
+------------
 
 run `yarn dev`
 
-Production Builder:
+Production Builder
+------------
 
 run `yarn build`
