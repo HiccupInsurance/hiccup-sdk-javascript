@@ -3,7 +3,7 @@ import RequestQuote from './Request/RequestQuote';
 import ResponseQuote from './Response/ResponseQuote';
 import ResponseError from "./Response/ResponseError";
 
-class Client {
+class Hiccup {
 
     //---------------------------------------------------------------------------------------------
     // Static properties
@@ -17,7 +17,7 @@ class Client {
     /**
      * HTTP Request config
      */
-    private httpConfig: AxiosRequestConfig;
+    private httpConfig: AxiosRequestConfig = {};
 
     //---------------------------------------------------------------------------------------------
     // Public methods
@@ -29,11 +29,11 @@ class Client {
      */
     public constructor(env: string, token: string) {
         switch (env) {
-            case Client.ENV_TEST:
-                this.httpConfig.baseURL = Client.ENDPOINT_TEST;
+            case Hiccup.ENV_TEST:
+                this.httpConfig.baseURL = Hiccup.ENDPOINT_TEST;
                 break;
-            case Client.ENV_LIVE:
-                this.httpConfig.baseURL = Client.ENV_LIVE;
+            case Hiccup.ENV_LIVE:
+                this.httpConfig.baseURL = Hiccup.ENDPOINT_LIVE;
                 break;
             default:
                 throw 'Invalid ENV value';
@@ -58,4 +58,5 @@ class Client {
     }
 }
 
-export default Client;
+export default Hiccup;
+export { Hiccup as client };

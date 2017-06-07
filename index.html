@@ -8,12 +8,12 @@
     <title>Hiccup SDK Javascript Smoke Testing</title>
     <script src="build/hiccup.js"></script>
     <script>
-        const Hiccup = new Hiccup(
-            'test',
+        const client = new Hiccup.client(
+            Hiccup.client.ENV_TEST,
             'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXUyJ9.eyJpZCI6MTAsImlhdCI6IjE0OTYzODg5MzUifQ.Xdc1iqwAG5gXa2O_-17GxcLKkggMv8AaZ34ue8ra3Ozh-ISJqDJyduuH8U364eP4Hv-B3PkUxtfUd7bnMiUpzyNemWAe7DQkcvk4LcaOP_6lAldlIpZXdI4SoDnRFgp8K_0y646e1VbyJnRlSu9rSMOqJP5e4MnVWM8lET-rhp_Mv9RyidVE8_yTRxM9-kh2_kjW2m3bn0ATmSxwhO5-mtqV6nLBgHLQdJZ0Bsrd5FyLsXCyEQxqS3ICGcJuQbE9vWqkF4xv0xLgnwSauh3ijcdByPLUR1w7GRCTZq1vYjGAx-uEhq9L9EuDsWMKoZUZvEpd6SBpr3D-3l97YKdTq6a2RHP6TBcdmv9sZkf3oo6c7gIurzMujxGHcga6twU21VrJR_9KWhHm2fbwhGehSEmJNHgyDGsaQK0UQ2FXpNe-bmzhshhTzURRYyrEGJjz5MU8nrN6mnrNMoUYCtOycOKyyIo7ktxfcfoBOHSPT_sns73ODuViiibAyrf5Fb7vfKHG3REPQqQYrb81et_jS7m4vfHtEwdOwtj5stf1TMeMFROueCNITLoqQB1VgmFP5-qCE-jSWLIG93IZaInvSfeojsnJy1zRPrKWi3nQ2w9O9hzLV3KLWYnl7nnSJeu0MxXWyDA53aSFPtA7bPmNS5lpESXHIsNggGhfE0pE6NE'
         );
 
-        Hiccup.me()
+        client.me()
             .then(response => console.log(response))
             .catch(error => console.error(error));
     </script>
