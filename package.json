@@ -10,10 +10,11 @@
     "url": "https://github.com/HiccupInsurance/hiccup-sdk-javascript.git"
   },
   "scripts": {
-    "dev": "webpack --watch --display-error-details",
+    "dev": "webpack --watch --display-error-details & browser-sync start --server --files src",
     "build": "webpack -p"
   },
   "devDependencies": {
+    "browser-sync": "^2.18.12",
     "ts-loader": "^2.1.0",
     "typescript": "^2.3.4",
     "webpack": "^2.6.1"
