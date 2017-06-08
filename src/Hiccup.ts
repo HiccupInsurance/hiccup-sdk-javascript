@@ -1,7 +1,5 @@
 import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
 import RequestQuote from './Request/RequestQuote';
-import ResponseQuote from './Response/ResponseQuote';
-import ResponseError from "./Response/ResponseError";
 
 class Hiccup {
 
@@ -39,13 +37,11 @@ class Hiccup {
                 throw 'Invalid ENV value';
         }
 
-        this.httpConfig.headers = {
-            Authorization: 'Bearer ' + token
-        };
+        this.httpConfig.headers = {Authorization: 'Bearer ' + token};
     }
 
     public getQuotes(request: RequestQuote): AxiosPromise {
-        return Axios.post('/api/quote', RequestQuote, this.httpConfig);
+        return Axios.post('/api/quote', request, this.httpConfig);
     }
 
     /**
