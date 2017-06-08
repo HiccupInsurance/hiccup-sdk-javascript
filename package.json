@@ -1,6 +1,6 @@
 {
   "name": "hiccup-sdk",
-  "version": "0.1.5",
+  "version": "0.1.7",
   "description": "Hiccup SDK for javascript",
   "main": "index.js",
   "author": "Budi Arsana <budi.arsana@hiccup.com.au>",
@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "webpack --watch --display-error-details & browser-sync start --server --files src",
     "build": "webpack -p",
-    "prepare": "npm run build"
+    "prepublish": "yarn build"
   },
   "devDependencies": {
     "axios": "^0.16.2",
