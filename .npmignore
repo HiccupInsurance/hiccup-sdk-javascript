@@ -1,0 +1,9 @@
+.idea/
+node_modules/
+src/
+.gitignore
+index.html
+readme.md
+tsconfig.json
+webpack.config.js
+yarn.lock
