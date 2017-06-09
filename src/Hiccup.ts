@@ -11,11 +11,15 @@ class Hiccup {
     static readonly ENV_LIVE: string = 'live';
     static readonly ENDPOINT_TEST: string = 'https://app.hiccup-staging.com';
     static readonly ENDPOINT_LIVE: string = 'https://app.hiccup.com.au';
+    static readonly STRIPE_PUBLIC_KEY_TEST: string = 'pk_test_psTozAlz1OCmOT6NmOiKUNGe';
+    static readonly STRIPE_PUBLIC_KEY_LIVE: string = 'pk_live_J7NwjEq4O4LWgiBv17xtsccO';
 
     /**
      * HTTP Request config
      */
     private httpConfig: AxiosRequestConfig = {};
+
+    private env: string;
 
     //---------------------------------------------------------------------------------------------
     // Public methods
@@ -34,9 +38,10 @@ class Hiccup {
                 this.httpConfig.baseURL = Hiccup.ENDPOINT_LIVE;
                 break;
             default:
-                throw 'Invalid ENV value';
+                throw new Error(`Invalid env "${env}" value`);
         }
 
+        this.env = env;
         this.httpConfig.headers = {Authorization: 'Bearer ' + token};
     }
 
@@ -51,6 +56,22 @@ class Hiccup {
      */
     public me(): AxiosPromise {
         return Axios.get('/api/me', this.httpConfig);
+    }
+
+    /**
+     * Get stripe public key
+     *
+     * @return {string}
+     */
+    public getStripePublicKey(): string {
+        switch (this.env) {
+            case Hiccup.ENV_TEST:
+                return Hiccup.STRIPE_PUBLIC_KEY_TEST;
+            case Hiccup.ENDPOINT_LIVE:
+                return Hiccup.STRIPE_PUBLIC_KEY_LIVE;
+        }
+
+        throw new Error(`Invalid env "${this.env}" value`);
     }
 }
 
