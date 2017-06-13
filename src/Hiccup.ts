@@ -1,5 +1,6 @@
 import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
 import RequestQuote from './Request/RequestQuote';
+import RequestPolicy from './Request/RequestPolicy';
 
 class Hiccup {
 
@@ -47,6 +48,10 @@ class Hiccup {
 
     public getQuotes(request: RequestQuote): AxiosPromise {
         return Axios.post('/api/quote', request, this.httpConfig);
+    }
+
+    public purchaseInsurance(request: RequestPolicy): AxiosPromise {
+        return Axios.post('/api/policy', request, this.httpConfig);
     }
 
     /**

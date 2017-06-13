@@ -6,7 +6,6 @@ interface RequestQuote {
     phone: string;
     ageMin: number;
     ageMax: number;
-    planId: number;
     startDate: string;
     endDate: string;
     country: string;
