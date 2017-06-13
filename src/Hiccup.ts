@@ -50,7 +50,7 @@ class Hiccup {
         return Axios.post('/api/quote', request, this.httpConfig);
     }
 
-    public purchaseInsurance(request: RequestPolicy): AxiosPromise {
+    public purchasePolicy(request: RequestPolicy): AxiosPromise {
         return Axios.post('/api/policy', request, this.httpConfig);
     }
 
