@@ -1,6 +1,6 @@
 {
   "name": "hiccup-sdk",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Hiccup SDK for javascript",
   "main": "index.js",
   "author": "Budi Arsana <budi.arsana@hiccup.com.au>",
@@ -15,10 +15,12 @@
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "axios": "^0.16.2",
     "browser-sync": "^2.18.12",
     "ts-loader": "^2.1.0",
     "typescript": "^2.3.4",
     "webpack": "^2.6.1"
+  },
+  "dependencies": {
+    "axios": "^0.16.2"
   }
 }
