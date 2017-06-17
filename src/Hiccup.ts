@@ -54,6 +54,10 @@ class Hiccup {
         return Axios.post('/api/policy', request, this.httpConfig);
     }
 
+    public getDisclaimer(productName: String): AxiosPromise {
+        return Axios.get(`/api/disclaimer/${productName}`, this.httpConfig);
+    }
+
     /**
      * Get user information
      *
