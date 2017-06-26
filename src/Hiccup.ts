@@ -4,6 +4,7 @@ import RequestQuote from './Request/RequestQuote';
 import RequestPolicy from './Request/RequestPolicy';
 import QuoteApi from './Api/QuoteApi';
 import PolicyApi from './Api/PolicyApi';
+import DisclaimerApi from './Api/DisclaimerApi';
 
 class Hiccup {
 
@@ -27,6 +28,7 @@ class Hiccup {
     private auth: AuthApi;
     private quote: QuoteApi;
     private policy: PolicyApi;
+    private dislcaimer: DisclaimerApi;
 
     //---------------------------------------------------------------------------------------------
     // Public methods
@@ -53,6 +55,7 @@ class Hiccup {
         this.auth = new AuthApi(this.httpConfig);
         this.quote = new QuoteApi(this.httpConfig);
         this.policy = new PolicyApi(this.httpConfig);
+        this.dislcaimer = new DisclaimerApi(this.httpConfig);
     }
 
     /**
@@ -94,7 +97,15 @@ class Hiccup {
         return Axios.post('/api/policy', request, this.httpConfig);
     }
 
-    public getDisclaimer(productName: String): AxiosPromise {
+    /**
+     * @param {string} productName
+     * @return {AxiosPromise}
+     *
+     * @deprecated deprecated since v0.3.0 and will be removed at v1.0.0
+     * @see DisclaimerApi.getDisclaimer
+     * @TODO(v1.0.0): remove this method
+     */
+    public getDisclaimer(productName: string): AxiosPromise {
         return Axios.get(`/api/disclaimer/${productName}`, this.httpConfig);
     }
 
