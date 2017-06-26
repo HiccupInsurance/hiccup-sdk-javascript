@@ -1,7 +1,7 @@
 import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
 import RequestToken from '../Request/RequestToken';
 
-class Auth {
+class AuthApi {
 
     //---------------------------------------------------------------------------------------------
     // Properties
@@ -47,4 +47,4 @@ class Auth {
     }
 }
 
-export default Auth;
+export default AuthApi;

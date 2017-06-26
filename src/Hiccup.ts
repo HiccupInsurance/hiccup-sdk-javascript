@@ -1,7 +1,8 @@
-import Auth from './Api/Auth';
+import AuthApi from './Api/AuthApi';
 import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
 import RequestQuote from './Request/RequestQuote';
 import RequestPolicy from './Request/RequestPolicy';
+import QuoteApi from './Api/QuoteApi';
 
 class Hiccup {
 
@@ -16,17 +17,14 @@ class Hiccup {
     static readonly STRIPE_PUBLIC_KEY_TEST: string = 'pk_test_psTozAlz1OCmOT6NmOiKUNGe';
     static readonly STRIPE_PUBLIC_KEY_LIVE: string = 'pk_live_J7NwjEq4O4LWgiBv17xtsccO';
 
-    /**
-     * HTTP Request config
-     */
+    //---------------------------------------------------------------------------------------------
+    // Private properties
+    //---------------------------------------------------------------------------------------------
+
     private httpConfig: AxiosRequestConfig = {};
-
-    /**
-     * SDK env
-     */
     private env: string;
-
-    private auth: Auth;
+    private auth: AuthApi;
+    private quote: QuoteApi;
 
     //---------------------------------------------------------------------------------------------
     // Public methods
@@ -50,9 +48,19 @@ class Hiccup {
 
         this.env = env;
         this.httpConfig.headers = {Authorization: 'Bearer ' + token};
-        this.auth = new Auth(this.httpConfig);
+        this.auth = new AuthApi(this.httpConfig);
+        this.quote = new QuoteApi(this.httpConfig);
     }
 
+    /**
+     *
+     * @param {RequestQuote} request
+     * @return {AxiosPromise}
+     *
+     * @deprecated deprecated since v0.3.0 and will be removed at v1.0.0
+     * @see QuoteApi.getQuotes
+     * @TODO(v1.0.0): remove this method
+     */
     public getQuotes(request: RequestQuote): AxiosPromise {
         return Axios.post('/api/quote', request, this.httpConfig);
     }
@@ -62,6 +70,10 @@ class Hiccup {
      *
      * @param {RequestQuote} request
      * @return {AxiosPromise}
+     *
+     * @deprecated deprecated since v0.3.0 and will be removed at v1.0.0
+     * @see QuoteApi.emailQuote
+     * @TODO(v1.0.0): remove this method
      */
     public emailQuote(request: RequestQuote): AxiosPromise {
         return Axios.post('/api/quote/sendEmail', request, this.httpConfig);
@@ -79,8 +91,9 @@ class Hiccup {
      * Get user information
      *
      * @return {AxiosPromise}
+     *
      * @deprecated deprecated since v0.3.0 and will be removed at v1.0.0
-     * @see Auth.me
+     * @see AuthApi.me
      * @TODO(v1.0.0): remove this method
      */
     public me(): AxiosPromise {
