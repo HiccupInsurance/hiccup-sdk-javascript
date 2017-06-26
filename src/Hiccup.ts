@@ -3,6 +3,7 @@ import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
 import RequestQuote from './Request/RequestQuote';
 import RequestPolicy from './Request/RequestPolicy';
 import QuoteApi from './Api/QuoteApi';
+import PolicyApi from './Api/PolicyApi';
 
 class Hiccup {
 
@@ -25,6 +26,7 @@ class Hiccup {
     private env: string;
     private auth: AuthApi;
     private quote: QuoteApi;
+    private policy: PolicyApi;
 
     //---------------------------------------------------------------------------------------------
     // Public methods
@@ -50,6 +52,7 @@ class Hiccup {
         this.httpConfig.headers = {Authorization: 'Bearer ' + token};
         this.auth = new AuthApi(this.httpConfig);
         this.quote = new QuoteApi(this.httpConfig);
+        this.policy = new PolicyApi(this.httpConfig);
     }
 
     /**
@@ -79,6 +82,14 @@ class Hiccup {
         return Axios.post('/api/quote/sendEmail', request, this.httpConfig);
     }
 
+    /**
+     * @param {RequestPolicy} request
+     * @return {AxiosPromise}
+     *
+     * @deprecated deprecated since v0.3.0 and will be removed at v1.0.0
+     * @see PolicyApi.purchase
+     * @TODO(v1.0.0): remove this method
+     */
     public purchasePolicy(request: RequestPolicy): AxiosPromise {
         return Axios.post('/api/policy', request, this.httpConfig);
     }
