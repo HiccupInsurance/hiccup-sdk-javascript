@@ -1,11 +1,10 @@
 import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
-import RequestToken from '../Request/RequestToken';
 
 /**
- * @class AuthApi
+ * @class ProductApi
  * @since 0.3.0
  */
-class AuthApi {
+class ProductApi {
 
     //---------------------------------------------------------------------------------------------
     // Properties
@@ -34,25 +33,25 @@ class AuthApi {
     //---------------------------------------------------------------------------------------------
 
     /**
-     * Get user information
+     * Get list of countries
      *
      * @return {AxiosPromise}
      * @since 0.3.0
      */
-    public me(): AxiosPromise {
-        return Axios.get('/api/me', this.httpConfig);
+    public getCountries(): AxiosPromise {
+        return Axios.get('/api/country', this.httpConfig);
     }
 
     /**
-     * Get user token
+     * Get list of states
      *
-     * @param {RequestToken} request
+     * @param {state} countryCode
      * @return {AxiosPromise}
      * @since 0.3.0
      */
-    public getToken(request: RequestToken): AxiosPromise {
-        return Axios.post('/api/me', request, this.httpConfig);
+    public getStates(countryCode: string): AxiosPromise {
+        return Axios.get(`/api/country/${countryCode}/state`, this.httpConfig);
     }
 }
 
-export default AuthApi;
+export default ProductApi;

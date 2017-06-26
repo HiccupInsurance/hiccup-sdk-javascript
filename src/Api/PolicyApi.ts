@@ -1,6 +1,9 @@
 import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
 import RequestPolicy from '../Request/RequestPolicy';
 
+/**
+ * @class PolicyApi
+ */
 class PolicyApi {
 
     //---------------------------------------------------------------------------------------------
@@ -9,6 +12,7 @@ class PolicyApi {
 
     /**
      * HTTP Request config
+     * @since 0.3.0
      */
     private httpConfig: AxiosRequestConfig = {};
 
@@ -18,6 +22,7 @@ class PolicyApi {
 
     /**
      * @param {AxiosRequestConfig} httpConfig
+     * @since 0.3.0
      */
     constructor(httpConfig: AxiosRequestConfig) {
         this.httpConfig = httpConfig;
@@ -30,6 +35,7 @@ class PolicyApi {
     /**
      * @param {RequestPolicy} request
      * @return {AxiosPromise}
+     * @since 0.3.0
      */
     public purchase(request: RequestPolicy): AxiosPromise {
         return Axios.post('/api/policy', request, this.httpConfig);

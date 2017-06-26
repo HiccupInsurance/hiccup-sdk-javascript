@@ -1,6 +1,10 @@
 import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
 import RequestQuote from '../Request/RequestQuote';
 
+/**
+ * @class QuoteApi
+ * @since 0.3.0
+ */
 class QuoteApi {
 
     //---------------------------------------------------------------------------------------------
@@ -9,6 +13,7 @@ class QuoteApi {
 
     /**
      * HTTP Request config
+     * @since 0.3.0
      */
     private httpConfig: AxiosRequestConfig = {};
 
@@ -18,6 +23,7 @@ class QuoteApi {
 
     /**
      * @param {AxiosRequestConfig} httpConfig
+     * @since 0.3.0
      */
     constructor(httpConfig: AxiosRequestConfig) {
         this.httpConfig = httpConfig;
@@ -30,6 +36,7 @@ class QuoteApi {
     /**
      * @param {RequestQuote} request
      * @return {AxiosPromise}
+     * @since 0.3.0
      */
     public getQuotes(request: RequestQuote): AxiosPromise {
         return Axios.post('/api/quote', request, this.httpConfig);
@@ -40,6 +47,7 @@ class QuoteApi {
      *
      * @param {RequestQuote} request
      * @return {AxiosPromise}
+     * @since 0.3.0
      */
     public emailQuote(request: RequestQuote): AxiosPromise {
         return Axios.post('/api/quote/sendEmail', request, this.httpConfig);

@@ -5,7 +5,12 @@ import RequestPolicy from './Request/RequestPolicy';
 import QuoteApi from './Api/QuoteApi';
 import PolicyApi from './Api/PolicyApi';
 import DisclaimerApi from './Api/DisclaimerApi';
+import ProductApi from './Api/ProductApi';
 
+/**
+ * @class Hiccup
+ * @since 0.0.1
+ */
 class Hiccup {
 
     //---------------------------------------------------------------------------------------------
@@ -28,7 +33,8 @@ class Hiccup {
     private auth: AuthApi;
     private quote: QuoteApi;
     private policy: PolicyApi;
-    private dislcaimer: DisclaimerApi;
+    private disclaimer: DisclaimerApi;
+    private product: ProductApi;
 
     //---------------------------------------------------------------------------------------------
     // Public methods
@@ -37,6 +43,7 @@ class Hiccup {
     /**
      * @param {string} env
      * @param {string} token
+     * @since 0.0.1
      */
     public constructor(env: string, token: string) {
         switch (env) {
@@ -55,7 +62,8 @@ class Hiccup {
         this.auth = new AuthApi(this.httpConfig);
         this.quote = new QuoteApi(this.httpConfig);
         this.policy = new PolicyApi(this.httpConfig);
-        this.dislcaimer = new DisclaimerApi(this.httpConfig);
+        this.disclaimer = new DisclaimerApi(this.httpConfig);
+        this.product = new ProductApi(this.httpConfig);
     }
 
     /**
@@ -126,6 +134,10 @@ class Hiccup {
      * Get list of countries
      *
      * @return {AxiosPromise}
+     *
+     * @deprecated deprecated since v0.3.0 and will be removed at v1.0.0
+     * @see ProductApi.getCountries
+     * @TODO(v1.0.0): remove this method
      */
     public getCountries(): AxiosPromise {
         return Axios.get('/api/country', this.httpConfig);

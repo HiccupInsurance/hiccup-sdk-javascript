@@ -1,5 +1,9 @@
 import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
 
+/**
+ * @class DisclaimerApi
+ * @since 0.3.0
+ */
 class DisclaimerApi {
 
     //---------------------------------------------------------------------------------------------
@@ -8,6 +12,7 @@ class DisclaimerApi {
 
     /**
      * HTTP Request config
+     * @since 0.3.0
      */
     private httpConfig: AxiosRequestConfig = {};
 
@@ -17,6 +22,7 @@ class DisclaimerApi {
 
     /**
      * @param {AxiosRequestConfig} httpConfig
+     * @since 0.3.0
      */
     constructor(httpConfig: AxiosRequestConfig) {
         this.httpConfig = httpConfig;
@@ -29,6 +35,7 @@ class DisclaimerApi {
     /**
      * @param {string} productName
      * @return {AxiosPromise}
+     * @since 0.3.0
      */
     public getDisclaimer(productName: string): AxiosPromise {
         return Axios.get(`/api/disclaimer/${productName}`, this.httpConfig);
