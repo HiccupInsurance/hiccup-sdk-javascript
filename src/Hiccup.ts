@@ -20,6 +20,9 @@ class Hiccup {
      */
     private httpConfig: AxiosRequestConfig = {};
 
+    /**
+     * SDK env
+     */
     private env: string;
 
     //---------------------------------------------------------------------------------------------
@@ -75,6 +78,15 @@ class Hiccup {
      */
     public me(): AxiosPromise {
         return Axios.get('/api/me', this.httpConfig);
+    }
+
+    /**
+     * Get list of countries
+     *
+     * @return {AxiosPromise}
+     */
+    public getCountries(): AxiosPromise {
+        return Axios.get('/api/country', this.httpConfig);
     }
 
     /**
