@@ -1,3 +1,4 @@
+import Auth from './Api/Auth';
 import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
 import RequestQuote from './Request/RequestQuote';
 import RequestPolicy from './Request/RequestPolicy';
@@ -25,6 +26,8 @@ class Hiccup {
      */
     private env: string;
 
+    private auth: Auth;
+
     //---------------------------------------------------------------------------------------------
     // Public methods
     //---------------------------------------------------------------------------------------------
@@ -47,6 +50,7 @@ class Hiccup {
 
         this.env = env;
         this.httpConfig.headers = {Authorization: 'Bearer ' + token};
+        this.auth = new Auth(this.httpConfig);
     }
 
     public getQuotes(request: RequestQuote): AxiosPromise {
@@ -75,6 +79,9 @@ class Hiccup {
      * Get user information
      *
      * @return {AxiosPromise}
+     * @deprecated deprecated since v0.3.0 and will be removed at v1.0.0
+     * @see Auth.me
+     * @TODO(v1.0.0): remove this method
      */
     public me(): AxiosPromise {
         return Axios.get('/api/me', this.httpConfig);
