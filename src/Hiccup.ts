@@ -37,7 +37,7 @@ class Hiccup {
     private product: ProductApi;
 
     //---------------------------------------------------------------------------------------------
-    // Public methods
+    // Magic methods
     //---------------------------------------------------------------------------------------------
 
     /**
@@ -66,6 +66,54 @@ class Hiccup {
         this.product = new ProductApi(this.httpConfig);
     }
 
+    //---------------------------------------------------------------------------------------------
+    // Properties accessor
+    //---------------------------------------------------------------------------------------------
+
+    /**
+     * @return {AuthApi}
+     * @since 1.0.2
+     */
+    public getAuthApi(): AuthApi {
+        return this.auth;
+    }
+
+    /**
+     * @return {QuoteApi}
+     * @since 1.0.2
+     */
+    public getQuoteApi(): QuoteApi {
+        return this.quote;
+    }
+
+    /**
+     * @return {PolicyApi}
+     * @since 1.0.2
+     */
+    public getPolicyApi(): PolicyApi {
+        return this.policy;
+    }
+
+    /**
+     * @return {DisclaimerApi}
+     * @since 1.0.2
+     */
+    public getDisclaimerApi(): DisclaimerApi {
+        return this.disclaimer;
+    }
+
+    /**
+     * @return {ProductApi}
+     * @since 1.0.2
+     */
+    public getProductApi(): ProductApi {
+        return this.product;
+    }
+
+    //---------------------------------------------------------------------------------------------
+    // Public methods
+    //---------------------------------------------------------------------------------------------
+
     /**
      * Get stripe public key
      *
@@ -81,6 +129,7 @@ class Hiccup {
 
         throw new Error(`Invalid env "${this.env}" value`);
     }
+
 }
 
 export default Hiccup;
