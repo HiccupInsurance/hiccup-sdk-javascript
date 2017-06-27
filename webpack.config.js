@@ -15,7 +15,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'build/'),
         filename: 'hiccup.js',
-        library: 'Hiccup',
+        library: 'HiccupSdk',
         libraryTarget: 'umd'
     }
 };
