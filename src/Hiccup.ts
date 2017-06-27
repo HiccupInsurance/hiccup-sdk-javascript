@@ -23,6 +23,9 @@ class Hiccup {
     static readonly ENDPOINT_LIVE: string = 'https://app.hiccup.com.au';
     static readonly STRIPE_PUBLIC_KEY_TEST: string = 'pk_test_psTozAlz1OCmOT6NmOiKUNGe';
     static readonly STRIPE_PUBLIC_KEY_LIVE: string = 'pk_live_J7NwjEq4O4LWgiBv17xtsccO';
+    static readonly COUNTRY_CODE_AUSTRALIA = 'AU';
+    static readonly PRODUCT_RVE = 'RVE';
+    static readonly PRODUCT_RVEI = 'RVEI';
 
     //---------------------------------------------------------------------------------------------
     // Private properties
@@ -67,6 +70,46 @@ class Hiccup {
     }
 
     //---------------------------------------------------------------------------------------------
+    // Public methods
+    //---------------------------------------------------------------------------------------------
+
+    /**
+     * Get stripe public key
+     *
+     * @return {string}
+     */
+    public getStripePublicKey(): string {
+        switch (this.env) {
+            case Hiccup.ENV_TEST:
+                return Hiccup.STRIPE_PUBLIC_KEY_TEST;
+            case Hiccup.ENDPOINT_LIVE:
+                return Hiccup.STRIPE_PUBLIC_KEY_LIVE;
+        }
+
+        throw new Error(`Invalid env "${this.env}" value`);
+    }
+
+    /**
+     * Get product type
+     *
+     * @param {string} destination
+     * @param {string} residency
+     * @return {string|null}
+     * @since 1.1.0
+     */
+    public getProductType(destination: string, residency?: string): string|null {
+        if (destination === Hiccup.COUNTRY_CODE_AUSTRALIA) {
+            return Hiccup.PRODUCT_RVE;
+        }
+
+        if (destination !== Hiccup.COUNTRY_CODE_AUSTRALIA && residency === Hiccup.COUNTRY_CODE_AUSTRALIA) {
+            return Hiccup.PRODUCT_RVEI;
+        }
+
+        return null;
+    }
+
+    //---------------------------------------------------------------------------------------------
     // Properties accessor
     //---------------------------------------------------------------------------------------------
 
@@ -108,26 +151,6 @@ class Hiccup {
      */
     public getProductApi(): ProductApi {
         return this.product;
-    }
-
-    //---------------------------------------------------------------------------------------------
-    // Public methods
-    //---------------------------------------------------------------------------------------------
-
-    /**
-     * Get stripe public key
-     *
-     * @return {string}
-     */
-    public getStripePublicKey(): string {
-        switch (this.env) {
-            case Hiccup.ENV_TEST:
-                return Hiccup.STRIPE_PUBLIC_KEY_TEST;
-            case Hiccup.ENDPOINT_LIVE:
-                return Hiccup.STRIPE_PUBLIC_KEY_LIVE;
-        }
-
-        throw new Error(`Invalid env "${this.env}" value`);
     }
 
 }
