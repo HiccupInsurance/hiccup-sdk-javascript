@@ -1,7 +1,5 @@
 import AuthApi from './Api/AuthApi';
-import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
-import RequestQuote from './Request/RequestQuote';
-import RequestPolicy from './Request/RequestPolicy';
+import {AxiosRequestConfig} from 'axios';
 import QuoteApi from './Api/QuoteApi';
 import PolicyApi from './Api/PolicyApi';
 import DisclaimerApi from './Api/DisclaimerApi';
@@ -28,16 +26,21 @@ class Hiccup {
     static readonly PRODUCT_RVEI = 'RVEI';
 
     //---------------------------------------------------------------------------------------------
+    // Public properties
+    //---------------------------------------------------------------------------------------------
+
+    public readonly auth: AuthApi;
+    public readonly quote: QuoteApi;
+    public readonly policy: PolicyApi;
+    public readonly disclaimer: DisclaimerApi;
+    public readonly product: ProductApi;
+
+    //---------------------------------------------------------------------------------------------
     // Private properties
     //---------------------------------------------------------------------------------------------
 
     private httpConfig: AxiosRequestConfig = {};
     private env: string;
-    private auth: AuthApi;
-    private quote: QuoteApi;
-    private policy: PolicyApi;
-    private disclaimer: DisclaimerApi;
-    private product: ProductApi;
 
     //---------------------------------------------------------------------------------------------
     // Magic methods
@@ -70,6 +73,30 @@ class Hiccup {
     }
 
     //---------------------------------------------------------------------------------------------
+    // Static methods
+    //---------------------------------------------------------------------------------------------
+
+    /**
+     * Get product type
+     *
+     * @param {string} destination
+     * @param {string} residency
+     * @return {string|null}
+     * @since 1.1.0
+     */
+    public static getProductType(destination: string, residency?: string): string|null {
+        if (destination === Hiccup.COUNTRY_CODE_AUSTRALIA) {
+            return Hiccup.PRODUCT_RVE;
+        }
+
+        if (destination !== Hiccup.COUNTRY_CODE_AUSTRALIA && residency === Hiccup.COUNTRY_CODE_AUSTRALIA) {
+            return Hiccup.PRODUCT_RVEI;
+        }
+
+        return null;
+    }
+
+    //---------------------------------------------------------------------------------------------
     // Public methods
     //---------------------------------------------------------------------------------------------
 
@@ -88,71 +115,6 @@ class Hiccup {
 
         throw new Error(`Invalid env "${this.env}" value`);
     }
-
-    /**
-     * Get product type
-     *
-     * @param {string} destination
-     * @param {string} residency
-     * @return {string|null}
-     * @since 1.1.0
-     */
-    public getProductType(destination: string, residency?: string): string|null {
-        if (destination === Hiccup.COUNTRY_CODE_AUSTRALIA) {
-            return Hiccup.PRODUCT_RVE;
-        }
-
-        if (destination !== Hiccup.COUNTRY_CODE_AUSTRALIA && residency === Hiccup.COUNTRY_CODE_AUSTRALIA) {
-            return Hiccup.PRODUCT_RVEI;
-        }
-
-        return null;
-    }
-
-    //---------------------------------------------------------------------------------------------
-    // Properties accessor
-    //---------------------------------------------------------------------------------------------
-
-    /**
-     * @return {AuthApi}
-     * @since 1.0.2
-     */
-    public getAuthApi(): AuthApi {
-        return this.auth;
-    }
-
-    /**
-     * @return {QuoteApi}
-     * @since 1.0.2
-     */
-    public getQuoteApi(): QuoteApi {
-        return this.quote;
-    }
-
-    /**
-     * @return {PolicyApi}
-     * @since 1.0.2
-     */
-    public getPolicyApi(): PolicyApi {
-        return this.policy;
-    }
-
-    /**
-     * @return {DisclaimerApi}
-     * @since 1.0.2
-     */
-    public getDisclaimerApi(): DisclaimerApi {
-        return this.disclaimer;
-    }
-
-    /**
-     * @return {ProductApi}
-     * @since 1.0.2
-     */
-    public getProductApi(): ProductApi {
-        return this.product;
-    }
-
 }
 
 export default Hiccup;
