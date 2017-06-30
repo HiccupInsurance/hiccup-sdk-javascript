@@ -1,3 +1,5 @@
+import State from "../Model/State";
+
 interface RequestQuote {
     title: string;
     firstName: string;
@@ -10,6 +12,8 @@ interface RequestQuote {
     endDate: string;
     country: string;
     sourceCountry: string;
+    product: string;
+    pickupState?: State;
     coupon?: string;
     vehicleClass?: string;
 }
