@@ -40,6 +40,15 @@ class DisclaimerApi {
     public getDisclaimer(productName: string): AxiosPromise {
         return Axios.get(`/api/disclaimer/${productName}`, this.httpConfig);
     }
+
+    /**
+     * @param {number} planId
+     * @return {AxiosPromise}
+     * @since 1.3.0
+     */
+    public getDisclaimerByPlan(planId: number): AxiosPromise {
+        return Axios.get(`/api/disclaimer-by-plan/${planId}`, this.httpConfig);
+    }
 }
 
 export default DisclaimerApi;
