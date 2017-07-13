@@ -1,0 +1,20 @@
+{
+  "name": "hiccup-sdk",
+  "description": "Hiccup SDK for javascript",
+  "main": "index.js",
+  "authors": [
+    "Budi Arsana <budi.arsana@hiccup.com.au>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "sdk"
+  ],
+  "homepage": "https://github.com/HiccupInsurance/hiccup-sdk-javascript",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
