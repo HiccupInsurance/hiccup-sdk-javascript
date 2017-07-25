@@ -109,7 +109,7 @@ class Hiccup {
         switch (this.env) {
             case Hiccup.ENV_TEST:
                 return Hiccup.STRIPE_PUBLIC_KEY_TEST;
-            case Hiccup.ENDPOINT_LIVE:
+            case Hiccup.ENV_LIVE:
                 return Hiccup.STRIPE_PUBLIC_KEY_LIVE;
         }
 
