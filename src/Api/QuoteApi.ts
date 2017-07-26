@@ -43,6 +43,18 @@ class QuoteApi {
     }
 
     /**
+     * Create quote without send email
+     * If we want to send an email, use QuoteApi.emailQuote()
+     *
+     * @param {RequestQuote} request
+     * @return {AxiosPromise}
+     * @since 1.4.0
+     */
+    public createQuote(request: RequestQuote): AxiosPromise {
+        return Axios.post('/api/quote/create', request, this.httpConfig);
+    }
+
+    /**
      * Send email quote
      *
      * @param {RequestQuote} request
