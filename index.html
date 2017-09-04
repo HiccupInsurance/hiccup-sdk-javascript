@@ -13,9 +13,64 @@
             'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXUyJ9.eyJpZCI6MTAsImlhdCI6IjE0OTYzODg5MzUifQ.Xdc1iqwAG5gXa2O_-17GxcLKkggMv8AaZ34ue8ra3Ozh-ISJqDJyduuH8U364eP4Hv-B3PkUxtfUd7bnMiUpzyNemWAe7DQkcvk4LcaOP_6lAldlIpZXdI4SoDnRFgp8K_0y646e1VbyJnRlSu9rSMOqJP5e4MnVWM8lET-rhp_Mv9RyidVE8_yTRxM9-kh2_kjW2m3bn0ATmSxwhO5-mtqV6nLBgHLQdJZ0Bsrd5FyLsXCyEQxqS3ICGcJuQbE9vWqkF4xv0xLgnwSauh3ijcdByPLUR1w7GRCTZq1vYjGAx-uEhq9L9EuDsWMKoZUZvEpd6SBpr3D-3l97YKdTq6a2RHP6TBcdmv9sZkf3oo6c7gIurzMujxGHcga6twU21VrJR_9KWhHm2fbwhGehSEmJNHgyDGsaQK0UQ2FXpNe-bmzhshhTzURRYyrEGJjz5MU8nrN6mnrNMoUYCtOycOKyyIo7ktxfcfoBOHSPT_sns73ODuViiibAyrf5Fb7vfKHG3REPQqQYrb81et_jS7m4vfHtEwdOwtj5stf1TMeMFROueCNITLoqQB1VgmFP5-qCE-jSWLIG93IZaInvSfeojsnJy1zRPrKWi3nQ2w9O9hzLV3KLWYnl7nnSJeu0MxXWyDA53aSFPtA7bPmNS5lpESXHIsNggGhfE0pE6NE'
         );
 
-        client.auth.me()
+//        client.auth.me()
+//            .then(response => console.log(response))
+//            .catch(error => console.error(error));
+
+//        client.quote
+//            .getQuotes({
+//                "title": "Mr.",
+//                "firstName": "Budi",
+//                "lastName": "Arsana",
+//                "email": "budi.arsana@hiccup.com.au",
+//                "phone": "+6288888888",
+//                "ageMin":21,
+//                "ageMax":27,
+//                "product":"RVEI",
+//                "startDate": "2030-06-06",
+//                "endDate": "2030-06-06",
+//                "country":"AU",
+//                "sourceCountry":"AU",
+//                "coupon": "vip-you-know-nothing-jon-snow",
+//                "vehicleClass": "ECMR"
+//            })
+//            .then(response => console.log(response))
+//            .catch(error => {
+//                console.error(error.response.data.data.user_message);
+//            });
+
+        client.policy
+            .purchase({
+                "title":"Mr",
+                "firstName":"Budi",
+                "lastName":"Arsana",
+                "email":"budi.arsana@hiccup.com.au",
+                "phone":"+62888888",
+                "ageMin":21,
+                "ageMax":75,
+                "planId":112,
+                "startDate":"2030-06-06",
+                "endDate":"2030-06-06",
+                "country":"AU",
+                "sourceCountry":"AU",
+                "pickupState": {
+                    "abbrev": "QLD"
+                },
+                "paymentProcessor":"stripe",
+                "paymentToken":"tok_1Aqv4UAbtUZpTIibCKbvpPa0",
+                "product":"RVE",
+                "cardFirstName": "alpha",
+                "cardLastName": "beta",
+                "rentalSupplier": "Avis",
+                "vehicleClass": "ECMR",
+                "depot": "Coolangatta Airport (Gold Coast Airport)",
+                "partnerConfirmation": "01012313414214",
+                "notifyWhenFail": false
+            })
             .then(response => console.log(response))
-            .catch(error => console.error(error));
+            .catch(error => {
+                console.log(error.response.data.data.user_message);
+            });
     </script>
 </head>
 <body>

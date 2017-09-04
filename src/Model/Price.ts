@@ -4,6 +4,7 @@ interface Price {
     tax: number,
     subTotal: number,
     discount: number,
+    discountPercentage: number,
     total: number,
     transactionFee: number,
     totalFeeTax: number,
