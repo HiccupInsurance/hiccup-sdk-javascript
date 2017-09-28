@@ -1,4 +1,4 @@
-import State from "../Model/State";
+import State from '../Model/State';
 
 interface RequestQuote {
     title: string;

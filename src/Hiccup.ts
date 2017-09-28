@@ -1,9 +1,9 @@
-import AuthApi from './Api/AuthApi';
 import {AxiosRequestConfig} from 'axios';
-import QuoteApi from './Api/QuoteApi';
-import PolicyApi from './Api/PolicyApi';
+import AuthApi from './Api/AuthApi';
 import DisclaimerApi from './Api/DisclaimerApi';
+import PolicyApi from './Api/PolicyApi';
 import ProductApi from './Api/ProductApi';
+import QuoteApi from './Api/QuoteApi';
 
 /**
  * @class Hiccup
@@ -15,15 +15,15 @@ class Hiccup {
     // Static properties
     //---------------------------------------------------------------------------------------------
 
-    static readonly ENV_TEST: string = 'test';
-    static readonly ENV_LIVE: string = 'live';
-    static readonly ENDPOINT_TEST: string = 'https://app.hiccup-staging.com';
-    static readonly ENDPOINT_LIVE: string = 'https://app.hiccup.com.au';
-    static readonly STRIPE_PUBLIC_KEY_TEST: string = 'pk_test_psTozAlz1OCmOT6NmOiKUNGe';
-    static readonly STRIPE_PUBLIC_KEY_LIVE: string = 'pk_live_J7NwjEq4O4LWgiBv17xtsccO';
-    static readonly COUNTRY_CODE_AUSTRALIA = 'AU';
-    static readonly PRODUCT_RVE = 'RVE';
-    static readonly PRODUCT_RVEI = 'RVEI';
+    public static readonly ENV_TEST: string = 'test';
+    public static readonly ENV_LIVE: string = 'live';
+    private static readonly ENDPOINT_TEST: string = 'https://app.hiccup-staging.com';
+    private static readonly ENDPOINT_LIVE: string = 'https://app.hiccup.com.au';
+    private static readonly STRIPE_PUBLIC_KEY_TEST: string = 'pk_test_psTozAlz1OCmOT6NmOiKUNGe';
+    private static readonly STRIPE_PUBLIC_KEY_LIVE: string = 'pk_live_J7NwjEq4O4LWgiBv17xtsccO';
+    private static readonly COUNTRY_CODE_AUSTRALIA = 'AU';
+    private static readonly PRODUCT_RVE = 'RVE';
+    private static readonly PRODUCT_RVEI = 'RVEI';
 
     //---------------------------------------------------------------------------------------------
     // Public properties

@@ -1,4 +1,4 @@
-import RequestQuote from "./RequestQuote";
+import RequestQuote from './RequestQuote';
 
 interface RequestPolicy extends RequestQuote {
     planId: string;
