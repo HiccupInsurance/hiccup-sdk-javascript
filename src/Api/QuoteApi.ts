@@ -1,4 +1,5 @@
-import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
+import Axios, {AxiosPromise, AxiosRequestConfig, AxiosResponse} from 'axios';
+import * as moment from 'moment';
 import RequestQuote from '../Request/RequestQuote';
 
 /**
@@ -39,6 +40,21 @@ class QuoteApi {
      * @since 0.3.0
      */
     public getQuotes(request: RequestQuote): AxiosPromise {
+        if (
+            moment(request.startDate).startOf('day') < moment().startOf('day') ||
+            moment(request.endDate).startOf('day') < moment().startOf('day')
+        ) {
+            return new Promise((resolve: (data: AxiosResponse) => void, reject: (data: AxiosResponse) => void) => {
+                reject({
+                    config: this.httpConfig,
+                    data: [],
+                    headers: this.httpConfig.headers,
+                    status: 400,
+                    statusText: 'Reject'
+                });
+            });
+        }
+
         return Axios.post('/api/quote', request, this.httpConfig);
     }
 
@@ -47,7 +63,7 @@ class QuoteApi {
      * If we want to send an email, use QuoteApi.emailQuote()
      *
      * @param {RequestQuote} request
-     * @return {AxiosPromise}
+     * @return {AxiosPromise}e
      * @since 1.4.0
      */
     public createQuote(request: RequestQuote): AxiosPromise {
