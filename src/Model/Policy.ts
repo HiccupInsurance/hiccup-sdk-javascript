@@ -8,14 +8,14 @@ interface Policy extends Transaction {
     destination: string;
     rentalSupplier: string;
     depot: string;
-    partnerConfirmation: string,
-    productPurchasedDescription: string,
-    category: string,
-    afterStart: boolean,
-    policyEnded: boolean,
-    paymentsCount: number,
-    upgradePlans: Product[],
-    partnerName: string
+    partnerConfirmation: string;
+    productPurchasedDescription: string;
+    category: string;
+    afterStart: boolean;
+    policyEnded: boolean;
+    paymentsCount: number;
+    upgradePlans: Product[];
+    partnerName: string;
 }
 
 export default Policy;

@@ -1,6 +1,6 @@
 {
-  "name": "hiccup-sdk",
-  "version": "1.4.1",
+  "name": "@hiccup-insurance/hiccup-sdk",
+  "version": "1.5.0",
   "description": "Hiccup SDK for javascript",
   "main": "index.js",
   "author": "Budi Arsana <budi.arsana@hiccup.com.au>",
@@ -10,17 +10,20 @@
     "url": "https://github.com/HiccupInsurance/hiccup-sdk-javascript.git"
   },
   "scripts": {
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "dev": "webpack --watch --display-error-details & browser-sync start --server --files src",
     "build": "webpack -p",
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "browser-sync": "^2.18.12",
-    "ts-loader": "^2.1.0",
-    "typescript": "^2.3.4",
-    "webpack": "^2.6.1"
+    "browser-sync": "2.18.12",
+    "ts-loader": "2.1.0",
+    "tslint": "5.7.0",
+    "typescript": "2.5.3",
+    "webpack": "2.6.1"
   },
   "dependencies": {
-    "axios": "^0.16.2"
+    "axios": "0.16.2",
+    "moment": "2.18.1"
   }
 }

@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "target": "ES5",
+    "lib": [
+      "ES2015"
+    ],
     "noImplicitAny": true,
     "removeComments": true,
     "strictNullChecks": true,
