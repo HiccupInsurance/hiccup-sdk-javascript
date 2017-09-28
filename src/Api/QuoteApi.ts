@@ -48,9 +48,12 @@ class QuoteApi {
                 reject({
                     config: this.httpConfig,
                     data: [],
-                    headers: this.httpConfig.headers,
+                    headers: {
+                        'cache-control': 'no-cache',
+                        'content-type': 'application/json'
+                    },
                     status: 400,
-                    statusText: 'Reject'
+                    statusText: 'cant get quotes for past dates'
                 });
             });
         }
