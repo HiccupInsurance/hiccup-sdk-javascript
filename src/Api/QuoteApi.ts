@@ -66,7 +66,7 @@ class QuoteApi {
      * If we want to send an email, use QuoteApi.emailQuote()
      *
      * @param {RequestQuote} request
-     * @return {AxiosPromise}e
+     * @return {AxiosPromise}
      * @since 1.4.0
      */
     public createQuote(request: RequestQuote): AxiosPromise {
