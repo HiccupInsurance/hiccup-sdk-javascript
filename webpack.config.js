@@ -1,12 +1,19 @@
 const path = require('path');
-const typescript = require('typescript');
-const webpack = require('webpack');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'src/') + '/Hiccup.ts',
+    entry: [
+        path.resolve(__dirname, 'src/') + '/Hiccup.ts'
+    ],
     module : {
         rules : [
-            {test : /\.(ts)?/, exclude: /node_modules/, use: 'ts-loader'}
+            {
+                test : /\.(ts|js)?/,
+                exclude: /node_modules/,
+                use: [
+                    "babel-loader",
+                    "ts-loader"
+                ]
+            }
         ]
     },
     resolve: {

@@ -1,4 +1,5 @@
 import {AxiosRequestConfig} from 'axios';
+import { polyfill } from 'es6-promise';
 import AuthApi from './Api/AuthApi';
 import DisclaimerApi from './Api/DisclaimerApi';
 import PolicyApi from './Api/PolicyApi';
@@ -62,6 +63,8 @@ class Hiccup {
             default:
                 throw new Error(`Invalid env "${env}" value`);
         }
+
+        polyfill();
 
         this.env = env;
         this.httpConfig.headers = {Authorization: 'Bearer ' + token};

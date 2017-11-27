@@ -1,4 +1,17 @@
 {
-    "plugins": ["transform-object-rest-spread", "transform-class-properties", "transform-runtime"],
-    "presets" : ["env", "react"]
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-class-properties",
+    "transform-runtime"
+  ],
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions", "ie >= 9"]
+        }
+      }
+    ]
+  ]
 }

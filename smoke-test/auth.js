@@ -1,5 +1,9 @@
 function testAuthMe() {
     client.auth.me()
-        .then(response => console.log(response))
-        .catch(error => console.error(error));
+        .then(function(response) {
+            console.log(response)
+        })
+        .catch(function(error) {
+            console.error(error)
+        });
 }
