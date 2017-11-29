@@ -64,7 +64,7 @@ class QuoteApi {
     /**
      * @param {string} hash
      * @return {AxiosPromise}
-     * @since 1.5.1
+     * @since 1.5.3
      */
     public getQuoteByHash(hash: string): AxiosPromise {
         return Axios.get('/api/quote/hash/' + hash, this.httpConfig);
