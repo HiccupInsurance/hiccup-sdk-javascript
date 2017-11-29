@@ -62,6 +62,15 @@ class QuoteApi {
     }
 
     /**
+     * @param {string} hash
+     * @return {AxiosPromise}
+     * @since 1.5.1
+     */
+    public getQuoteByHash(hash: string): AxiosPromise {
+        return Axios.get('/api/quote/hash/' + hash, this.httpConfig);
+    }
+
+    /**
      * Create quote without send email
      * If we want to send an email, use QuoteApi.emailQuote()
      *
