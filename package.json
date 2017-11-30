@@ -1,6 +1,6 @@
 {
   "name": "@hiccup-insurance/hiccup-sdk",
-  "version": "1.5.2",
+  "version": "1.5.4",
   "description": "Hiccup SDK for javascript",
   "main": "index.js",
   "author": "Budi Arsana <budi.arsana@hiccup.com.au>",
