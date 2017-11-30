@@ -38,3 +38,22 @@ function testQuoteGetQuotes(startDate, endDate) {
             console.error(error)
         });
 }
+
+/**
+ * Test get quote by hash
+ *
+ * @param {string} hash
+ */
+function testGetQuoteByHash(hash) {
+    if (typeof hash === 'undefined') {
+        hash = 'ac5c1792c25935df1d18f0767097e5c2';
+    }
+
+    client.quote.getQuoteByHash(hash)
+        .then(function(response) {
+            console.log(response)
+        })
+        .catch(function(error) {
+            console.error(error)
+        });
+}
