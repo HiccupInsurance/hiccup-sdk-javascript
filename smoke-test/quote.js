@@ -4,13 +4,13 @@
  * @param {string|null} startDate
  * @param {string|null} endDate
  */
-function testQuoteGetQuotes(startDate = null, endDate = null) {
+function testQuoteGetQuotes(startDate, endDate) {
 
-    if (startDate === null) {
+    if (typeof startDate === 'undefined') {
         startDate = '2030-06-06';
     }
 
-    if (endDate === null) {
+    if (typeof endDate === 'undefined') {
         endDate = '2030-06-06';
     }
 
@@ -31,8 +31,12 @@ function testQuoteGetQuotes(startDate = null, endDate = null) {
             coupon: 'vip-you-know-nothing-jon-snow',
             vehicleClass: 'ECMR'
         })
-        .then(response => console.log(response))
-        .catch(error => console.log(error));
+        .then(function(response) {
+            console.log(response)
+        })
+        .catch(function(error) {
+            console.error(error)
+        });
 }
 
 /**

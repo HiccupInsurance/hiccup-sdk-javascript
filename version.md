@@ -1,3 +1,9 @@
+1.5.2
+======
+
+- tslint targetting ES2017
+- add babel to targeting >= IE9 
+
 1.5.1
 ======
 

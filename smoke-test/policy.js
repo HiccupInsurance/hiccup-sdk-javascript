@@ -27,6 +27,10 @@ function testPolicyPurchase() {
             partnerConfirmation: '01012313414214',
             notifyWhenFail: false
         })
-        .then(response => console.log(response))
-        .catch(error => console.log(error));
+        .then(function(response) {
+            console.log(response)
+        })
+        .catch(function(error) {
+            console.error(error)
+        });
 }
