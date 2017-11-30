@@ -1,9 +1,7 @@
 hiccup/hiccup-sdk-javascript:
   PreBuild:
-    - nvm use stable
+    - nvm install v6.11.3
+    - nvm use v6.11.3
     - npm install
-  Build:
-    - echo "--- Linter ---"
     - npm run lint
-    - echo "--- Build ---"
     - npm run build
