@@ -1,0 +1,7 @@
+hiccup/hiccup-sdk-javascript:
+  PreBuild:
+    - nvm install v6.11.3
+    - nvm use v6.11.3
+    - npm install
+    - npm run lint
+    - npm run build
