@@ -8,6 +8,8 @@ interface MeResponse {
     homepageURL: string;
     templateFooterCode: string;
     creditCardShortName: string;
+    logo: string;
+    email: string;
 }
 
 export default MeResponse;
