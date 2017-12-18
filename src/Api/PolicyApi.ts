@@ -44,6 +44,17 @@ class PolicyApi {
     }
 
     /**
+     * Purchase insurance from quote
+     *
+     * @param {string} quoteNumber
+     * @param {RequestPolicy} request
+     * @return {AxiosPromise}
+     */
+    public purchaseFromQuote(quoteNumber: string, request: RequestPolicy): AxiosPromise {
+        return Axios.post(`policy/fromQuote/${quoteNumber}`, request, this.httpConfig);
+    }
+
+    /**
      * Get policy by number
      *
      * @param {string} policyNumber
