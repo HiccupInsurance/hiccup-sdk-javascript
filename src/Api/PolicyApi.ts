@@ -1,5 +1,7 @@
 import Axios, {AxiosPromise, AxiosRequestConfig} from 'axios';
+import RequestFeedback from '../Request/RequestFeedback';
 import RequestPolicy from '../Request/RequestPolicy';
+import RequestQuote from '../Request/RequestQuote';
 
 /**
  * @class PolicyApi
@@ -98,6 +100,49 @@ class PolicyApi {
         return Axios.get(`/api/policy/findByHashId?hash_id=${hashId}`, this.httpConfig);
     }
 
+    /**
+     * Update policy & save personal info fields
+     *
+     * @param {string} hashId
+     * @param {RequestQuote} request
+     * @return {AxiosPromise}
+     */
+    public update(hashId: string, request: RequestQuote): AxiosPromise {
+        return Axios.patch(`/api/policy/${hashId}`, request, this.httpConfig);
+    }
+
+    /**
+     * Update policy & extend policy/improve plan
+     *
+     * @param {string} hashId
+     * @param {RequestPolicy} request
+     * @return {AxiosPromise}
+     */
+    public updateAndPay(hashId: string, request: RequestPolicy): AxiosPromise {
+        return Axios.patch(`/api/policy/hash/${hashId}/pay`, request, this.httpConfig);
+    }
+
+    /**
+     * Refund/cancel policy
+     *
+     * @param {string} hashId
+     * @param {RequestQuote} request
+     * @return {AxiosPromise}
+     */
+    public refund(hashId: string, request: RequestQuote): AxiosPromise {
+        return Axios.patch(`/api/policy/hash/${hashId}/refund`, request, this.httpConfig);
+    }
+
+    /**
+     * Send feedback for policy when it's refunded/canceled
+     *
+     * @param {string} hashId
+     * @param {RequestFeedback} feedback
+     * @return {AxiosPromise}
+     */
+    public sendFeedback(hashId: string, feedback: RequestFeedback): AxiosPromise {
+        return Axios.post(`/api/policy/hash/${hashId}/feedback`, feedback, this.httpConfig);
+    }
 }
 
 export default PolicyApi;

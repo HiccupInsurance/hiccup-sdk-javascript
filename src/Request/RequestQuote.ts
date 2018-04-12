@@ -16,6 +16,7 @@ interface RequestQuote {
     pickupState?: State;
     coupon?: string;
     vehicleClass?: string;
+    planId?: string;
 }
 
 export default RequestQuote;
