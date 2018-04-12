@@ -2,6 +2,7 @@ import {AxiosRequestConfig} from 'axios';
 import { polyfill } from 'es6-promise';
 import AuthApi from './Api/AuthApi';
 import DisclaimerApi from './Api/DisclaimerApi';
+import PartnerApi from './Api/PartnerApi';
 import PolicyApi from './Api/PolicyApi';
 import ProductApi from './Api/ProductApi';
 import QuoteApi from './Api/QuoteApi';
@@ -35,6 +36,7 @@ class Hiccup {
     public readonly policy: PolicyApi;
     public readonly disclaimer: DisclaimerApi;
     public readonly product: ProductApi;
+    public readonly partner: PartnerApi;
 
     //---------------------------------------------------------------------------------------------
     // Private properties
@@ -73,6 +75,7 @@ class Hiccup {
         this.policy = new PolicyApi(this.httpConfig);
         this.disclaimer = new DisclaimerApi(this.httpConfig);
         this.product = new ProductApi(this.httpConfig);
+        this.partner = new PartnerApi(this.httpConfig);
     }
 
     //---------------------------------------------------------------------------------------------
