@@ -21,7 +21,7 @@ class Hiccup {
     public static readonly ENV_LIVE: string = 'live';
     private static readonly ENDPOINT_TEST: string = 'https://app.hiccup-staging.com';
     private static readonly ENDPOINT_LIVE: string = 'https://app.hiccup.com.au';
-    private static readonly STRIPE_PUBLIC_KEY_TEST: string = 'pk_test_psTozAlz1OCmOT6NmOiKUNGe';
+    private static readonly STRIPE_PUBLIC_KEY_TEST: string = 'pk_test_VQnPfqgS3DhNYGlsWhIxTn1Z';
     private static readonly STRIPE_PUBLIC_KEY_LIVE: string = 'pk_live_J7NwjEq4O4LWgiBv17xtsccO';
     private static readonly COUNTRY_CODE_AUSTRALIA = 'AU';
     private static readonly PRODUCT_RVE = 'RVE';
