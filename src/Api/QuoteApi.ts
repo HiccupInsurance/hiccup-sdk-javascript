@@ -1,5 +1,5 @@
 import Axios, {AxiosPromise, AxiosRequestConfig, AxiosResponse} from 'axios';
-import * as moment from 'moment';
+import { isBefore, isSameDay } from 'date-fns';
 import RequestQuote from '../Request/RequestQuote';
 
 /**
@@ -40,9 +40,13 @@ class QuoteApi {
      * @since 0.3.0
      */
     public getQuotes(request: RequestQuote): AxiosPromise {
+        const startDate = new Date(request.startDate);
+        const endDate = new Date(request.endDate);
+        const today = new Date();
+
         if (
-            moment(request.startDate).startOf('day') < moment().startOf('day') ||
-            moment(request.endDate).startOf('day') < moment().startOf('day')
+            (isBefore(startDate, today) === true && isSameDay(startDate, today) === false) ||
+            (isBefore(endDate, today) === true && isSameDay(endDate, today) === false)
         ) {
             return new Promise((resolve: (data: AxiosResponse) => void, reject: (data: AxiosResponse) => void) => {
                 reject({
